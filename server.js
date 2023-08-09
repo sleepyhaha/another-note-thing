@@ -10,10 +10,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/api", api);
 
-app.use(express.statis("public"));
+app.use(express.static("public"));
 
 app.get("/", (req, res) =>
-  res.sendfile(path.join(__dirname, "./public/assets/js/index.js"))
+  res.sendFile(path.join(__dirname, "./public/index.html"))
+);
+
+app.get("/notes", (req, res) =>
+  res.sendFile(path.join(__dirname, "./public/notes.html"))
 );
 
 app.listen(PORT, () => console.log(`Listening at http://localhost:${PORT}`));
