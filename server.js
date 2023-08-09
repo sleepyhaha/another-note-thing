@@ -7,6 +7,7 @@ const {
 } = require("./public/assets/js/utils");
 const uid = require("./public/assets/js/idGen");
 const { readSync } = require("fs");
+const db = require("./db/db.json");
 
 const PORT = process.env.PORT || 3001;
 
@@ -30,6 +31,12 @@ app.post("/api/notes", (req, res) => {
   };
   readAndAppend(userNote, "./db/db.json");
   res.json(response);
+});
+
+app.delete("/api/notes/:id", (req, res) => {
+  const newDB = db.filter((db) => userNote.id !== req.params.id);
+  writeToFile("./db", newDB);
+  res.json(newDB);
 });
 
 app.get("/", (req, res) => {
