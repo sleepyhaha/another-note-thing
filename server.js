@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require("path");
-const api = require("./index");
+const api = require("./public/assets/js/index");
 
 const PORT = process.env.PORT || 3001;
 
@@ -12,6 +12,8 @@ app.use("/api", api);
 
 app.use(express.statis("public"));
 
-app.get("/", (req, res) => res.sendfile(path.join(__dirname, "../index.html")));
+app.get("/", (req, res) =>
+  res.sendfile(path.join(__dirname, "./public/assets/js/index.js"))
+);
 
 app.listen(PORT, () => console.log(`Listening at http://localhost:${PORT}`));
