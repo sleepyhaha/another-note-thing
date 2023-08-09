@@ -22,11 +22,11 @@ app.get("/api/notes", (req, res) =>
 );
 
 app.post("/api/notes", (req, res) => {
-  const { title, body } = req.body;
+  const { title, text } = req.body;
   const userNote = {
     title,
-    body,
-    uid: uid(),
+    text,
+    id: uid(),
   };
   readAndAppend(userNote, "./db/db.json");
   res.json(response);
