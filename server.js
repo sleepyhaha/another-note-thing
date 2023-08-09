@@ -36,7 +36,7 @@ app.post("/api/notes", (req, res) => {
 app.delete("/api/notes/:id", (req, res) => {
   const newDB = db.filter((userNote) => userNote.id !== req.params.id);
   readAndAppend(newDB, "./db/db.json");
-  res.json(response);
+  res.json(newDB);
 });
 
 app.get("/", (req, res) => {
