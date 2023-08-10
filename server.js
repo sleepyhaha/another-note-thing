@@ -34,10 +34,8 @@ app.post("/api/notes", (req, res) => {
 });
 
 app.delete("/api/notes/:id", (req, res) => {
-  const newDB = readFromFile(
-    db.filter((userNote) => userNote.id !== req.params.id)
-  );
-  writeToFile(newDB, "./db/db.json");
+  const newDB = db.filter((userNote) => userNote.id !== req.params.id);
+  writeToFile("./db/db.json", newDB);
   res.json(newDB);
 });
 
