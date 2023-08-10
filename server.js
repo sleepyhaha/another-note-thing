@@ -34,9 +34,9 @@ app.post("/api/notes", (req, res) => {
 });
 
 app.delete("/api/notes/:id", (req, res) => {
-  const newDB = readFromFile("./db/db.json").then((data) =>
-    JSON.parse(data.filter((userNote) => userNote.id !== req.params.id))
-  );
+  const parsedDB = JSON.parse(fs.readFileSync("./db/db.json"));
+
+  const newDB = parsedDB.filter((userNote) => userNote.id !== req.params.id);
   writeToFile("./db/db.json", newDB);
   res.json(newDB);
 });
