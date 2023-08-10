@@ -6,7 +6,7 @@ const {
   readAndAppend,
 } = require("./public/assets/js/utils");
 const uid = require("./public/assets/js/idGen");
-const { readSync } = require("fs");
+const fs = require("fs");
 const db = require("./db/db.json");
 
 const PORT = process.env.PORT || 3001;
