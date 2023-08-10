@@ -1,3 +1,5 @@
+// Code taken from coding bootcamp Week 11
+
 const fs = require("fs");
 const util = require("util");
 
